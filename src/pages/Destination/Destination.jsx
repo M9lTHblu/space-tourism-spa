@@ -1,8 +1,6 @@
 import {NavLink, Outlet} from 'react-router-dom';
 import styled from 'styled-components/macro';
-import {MainContainer} from '../../components/Shared';
-
-
+import {MainContainer} from '../../components/shared/MainContainer';
 
 export const Destination = () => {
   return (

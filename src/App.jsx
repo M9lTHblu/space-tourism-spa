@@ -1,10 +1,10 @@
 import {Route, Routes} from 'react-router-dom';
-import {Layout} from './components/Layout';
+import {Layout} from './components/Layout/Layout';
 import {Crew} from './pages/Crew/Crew';
 import {Destination} from './pages/Destination/Destination';
 import {Planet} from './pages/Destination/Planet';
 
-import {Home} from './pages/Explore/Home';
+import {Home} from './pages/Home/Home';
 import {Technology} from './pages/Technology/Technology';
 
 const App = () => {

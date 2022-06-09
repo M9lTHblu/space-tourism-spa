@@ -2,8 +2,7 @@ import styled from 'styled-components/macro';
 import bgLaptop from '../../assets/home/background-home-desktop.jpg';
 import bgMobile from '../../assets/home/background-home-mobile.jpg';
 import bgTablet from '../../assets/home/background-home-tablet.jpg';
-import {MainContainer} from '../../components/Shared';
-import {Button, Explore} from './Button';
+import {Explore} from '../../components/Explore/Button';
 import {Subtitle} from './Subtitle';
 import {Text} from './Text';
 import {Title} from './Title';
@@ -11,7 +10,7 @@ import {Title} from './Title';
 export const Home = () => {
   return (
       <HomeSection>
-        <MainContainer>
+        <div>
           <Subtitle>
             so, you want to travel to
           </Subtitle>
@@ -24,15 +23,20 @@ export const Home = () => {
             Well sit back, and relax because we’ll give you a truly out of this
             world experience!
           </Text>
-          <Explore />
-        </MainContainer>
+        </div>
+        <Explore />
       </HomeSection>
   );
 };
 
 export const HomeSection = styled.section`
+  padding: 48px 0;
   color: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 81px;
 
   ::before {
     content: '';
