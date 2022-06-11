@@ -5,12 +5,13 @@ export const Text = styled.p`
   font-size: 15px;
   line-height: 25px;
   color: var(--primary);
+
   
-  @media (min-width: var(--tablet)) {
+  @media (min-width: 768px) {
    font-size: 16px;
     line-height: 28px;
   }
-  @media (min-width: var(--laptop)) {
+  @media (min-width: 1440px) {
     font-size: 18px;
     line-height: 32px;
     

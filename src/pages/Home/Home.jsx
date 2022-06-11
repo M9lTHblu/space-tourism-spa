@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import bgLaptop from '../../assets/home/background-home-desktop.jpg';
 import bgMobile from '../../assets/home/background-home-mobile.jpg';
 import bgTablet from '../../assets/home/background-home-tablet.jpg';
-import {Explore} from '../../components/Explore/Button';
+import {Explore} from '../../components/Explore/Explore';
 import {Subtitle} from './Subtitle';
 import {Text} from './Text';
 import {Title} from './Title';
@@ -10,7 +10,7 @@ import {Title} from './Title';
 export const Home = () => {
   return (
       <HomeSection>
-        <div>
+        <TextContainer>
           <Subtitle>
             so, you want to travel to
           </Subtitle>
@@ -23,20 +23,30 @@ export const Home = () => {
             Well sit back, and relax because we’ll give you a truly out of this
             world experience!
           </Text>
-        </div>
+        </TextContainer>
         <Explore />
       </HomeSection>
   );
 };
 
 export const HomeSection = styled.section`
+  height: 100vh;
+  max-height: 667px;
   padding: 48px 0;
   color: white;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 81px;
+  justify-content: space-around;
+
+  @media (min-width: 768px) {
+
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 
   ::before {
     content: '';
@@ -52,12 +62,23 @@ export const HomeSection = styled.section`
     background-position: center;
     background-size: cover;
 
-    @media (min-width: var(--tablet)) {
+    @media (min-width: 768px) {
       background-image: url(${bgTablet});
     }
 
-    @media (min-width: var(--laptop)) {
+    @media (min-width: 1440px) {
       background-image: url(${bgLaptop});
     }
+  }
+`;
+
+const TextContainer = styled.div`
+  text-align: center;
+
+  @media (min-width: 768px) {
+    margin: 130px 0 156px;
+  }
+  @media (min-width: 1440px) {
+    text-align: left;
   }
 `;

@@ -6,11 +6,12 @@ export const Layout = () => {
   return (
       <>
         <Header />
+          <main>
         <MainContainer>
-          <main style={{overflow: 'hidden'}}>
             <Outlet />
-          </main>
         </MainContainer>
+          </main>
       </>
   );
 };
+

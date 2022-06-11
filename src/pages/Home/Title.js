@@ -8,11 +8,13 @@ export const Title = styled.h1`
   color: white;
   text-transform: uppercase;
   
-  @media (min-width: var(--tablet)) {
+  @media (min-width: 768px) {
+    margin: 24px 0;
     font-size: 150px;
     line-height: 150px;
   }
-  @media (min-width: var(--laptop)) {
+  
+  @media (min-width: 1440px) {
     line-height: 172px;
   }
 `

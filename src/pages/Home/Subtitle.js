@@ -8,12 +8,12 @@ export const Subtitle = styled.span`
   text-transform: uppercase;
   color: var(--primary);
 
-  @media (min-width: var(--tablet)) {
+  @media (min-width: 768px) {
     font-size: 20px;
-    letter-spacing: 4.75px;
+    letter-spacing: 3.25px;
   }
   
-  @media (min-width: var(--laptop)) {
+  @media (min-width: 1440px) {
     font-size: 28px;
     letter-spacing: 4.75px;
   }

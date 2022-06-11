@@ -2,34 +2,47 @@ import styled from 'styled-components/macro';
 import logo from '../../assets/shared/logo.svg';
 import useMatchMedia from '../../hooks/useMatchMedia';
 import {MainContainer} from '../shared/MainContainer';
-import {Desktop} from './Desktop';
+import {Menu} from './Menu';
 import {Mobile} from './Mobile';
+import {Nav} from './Nav';
 
 export const Header = () => {
-  const isMobile = useMatchMedia();
+  const isMobile = useMatchMedia(767);
 
   return (
-      <Container as='header'>
-        <HeaderLogo src={logo}/>
-        {isMobile ? <Mobile/> : <Desktop/>}
-      </Container>
+      <HeaderContainer as='header'>
+        <HeaderLogo src={logo} />
+        {isMobile ? (
+            <Mobile fuse={!isMobile} />
+        ) : (
+            <Nav>
+              <Menu />
+            </Nav>)}
+      </HeaderContainer>
   );
 };
 
-const Container = styled(MainContainer)`
-  padding-top: 24px;
+const HeaderContainer = styled(MainContainer)`
+  
+  margin-inline: auto;
   display: flex;
   justify-content: space-between;
-
-  @media (min-width: var(--tablet)) {
-    padding-top: 24px;
-  }
-  @media (min-width: var(--laptop)) {
+  align-items: center;
+  padding-top: 24px;
+  
+  @media (min-width: 1440px) {
+    max-width: 1440px;
     padding-top: 64px;
+    padding-left: 55px;
   }
-`
+`;
 
 const HeaderLogo = styled.img`
   width: 40px;
   height: 40px;
-`
+  
+  @media (min-width: 768px) {
+    width: 48px;
+    height: 48px;
+  }
+`;
