@@ -1,30 +1,28 @@
-import styled from 'styled-components/macro'
-import {useParams} from 'react-router-dom';
-import moon from '../../assets/destination/image-moon.webp'
-import mars from '../../assets/destination/image-mars.webp'
-import europa from '../../assets/destination/image-europa.webp'
-import titan from '../../assets/destination/image-titan.webp'
+import {Link} from 'react-router-dom';
+import styled from 'styled-components/macro';
 
-const planets = {
-moon: {name: 'moon', img: moon},
-mars: {name: 'mars', img: mars},
-europa: {name: 'europa', img: europa},
-titan: {name: 'titan', img: titan},
-}
-
-export const Planet = () => {
-  const {planet} = useParams()
+export const Planet = ({planet}) => {
 
   return (
-      <div>
-        <Img src={planets[planet].img}
-             alt={`This picture shows the planet ${planets[planet].name}`}
-        />
-        {planets[planet].name}
-      </div>
-  )
-}
+      <PlanetContainer>
+        <Container>
+          <h1>{planet}</h1>
+          <ul>
+            <li><Link to='mars'>mars</Link></li>
+            <li><Link to='titan'>titan</Link></li>
+          </ul>
+        </Container>
+      </PlanetContainer>
+  );
+};
 
-const Img = styled.img`
-  width: 170px;
+const PlanetContainer = styled.div` 
+  color: blue;
 `
+
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 238px;
+`;
+
+

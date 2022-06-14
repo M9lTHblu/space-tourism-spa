@@ -1,17 +1,18 @@
 import {Outlet} from 'react-router-dom';
+import {DataProvider} from '../../Contenxt/DataContext';
+import {ViewportSizeProvider} from '../../Contenxt/ViewportContenxt';
 import {Header} from '../Header/Header';
-import {MainContainer} from '../shared/MainContainer';
 
 export const Layout = () => {
   return (
-      <>
-        <Header />
+      <ViewportSizeProvider>
+        <DataProvider>
+          <Header />
           <main>
-        <MainContainer>
             <Outlet />
-        </MainContainer>
           </main>
-      </>
+        </DataProvider>
+      </ViewportSizeProvider>
   );
 };
 

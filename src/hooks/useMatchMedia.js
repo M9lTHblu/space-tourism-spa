@@ -1,23 +1,42 @@
 import {useEffect, useState} from 'react';
 
-const useMatchMedia = (query) => {
-  const [isMobile, setIsMobile] = useState(window.matchMedia(`(max-width: ${query}px)`).matches);
+const sizes = [
+  {width: '(max-width: 767px)', name: 'mobile'},
+  {width: '(min-width: 767px) and (max-width: 1439px)', name: 'tablet'},
+  {width: '(min-width: 1440px) and (max-width: 2559px)', name: 'laptop'},
+  {width: '(min-width: 2560px)', name: 'desktop'},
+];
+
+
+const useMatchMedia = () => {
+
+  const getInitialState = (sizes) => {
+    for (const {width, name} of sizes) {
+      if (window.matchMedia(width).matches) {
+        return name;
+      }
+    }
+  }
+
+  const [width, setWidth] = useState(() => getInitialState(sizes));
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia(`(max-width: ${query}px)`);
-    const handleWidth = (e) => {
-      const matches = e.matches
-      setIsMobile(matches);
+    const handler = (name) => (e) => {
+      if (e.matches) {
+        setWidth(name);
+      }
     };
 
-    mediaQueryList.addEventListener('change', handleWidth);
+    return sizes.map(({width, name}) => {
+      const mQ = window.matchMedia(width);
+      mQ.addEventListener('change', handler(name));
 
-    return () => {
-      mediaQueryList.removeEventListener('change', handleWidth);
-    };
+      return {mQ, name};
+    }).forEach(({mQ}) => mQ.removeEventListener('change', handler));
+
   });
 
-  return isMobile;
+  return width;
 };
 
 export default useMatchMedia;

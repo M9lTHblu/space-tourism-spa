@@ -16,7 +16,6 @@ export const MenuBtn = ({open, setOpen}) => {
 
 const Container = styled.div`
   position: relative;
-  z-index: 200;
   width: 24px;
   height: 21px;
   display: flex;
@@ -27,5 +26,5 @@ const Container = styled.div`
 const Line = styled(motion.div)`
   width: 24px;
   height: 3px;
-  background-color: var(--primary);
+  background-color: ${({theme}) => theme.colors.primary};
 `;
